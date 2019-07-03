@@ -1,14 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace IsometricMonoGame
+namespace IsometricMonoGame.Core
 {
     public class GameCore : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Texture2D sprite;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private Texture2D sprite;
+        private Player player = null;
         
         public GameCore()
         {
@@ -58,7 +60,9 @@ namespace IsometricMonoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if (player == null)
+                player = new Player(sprite);
+            player.Move(gameTime);
 
             base.Update(gameTime);
         }
@@ -70,9 +74,7 @@ namespace IsometricMonoGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
-            spriteBatch.Draw(sprite, new Vector2(0, 0), Color.White);
-            spriteBatch.End();
+            player.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using IsometricMonoGame.Core;
 
 namespace IsometricMonoGame
 {
