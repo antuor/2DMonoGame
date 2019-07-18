@@ -23,8 +23,6 @@ namespace IsometricMonoGame.Core
             position += positionChanged;
         }
 
-        
-
         internal void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
