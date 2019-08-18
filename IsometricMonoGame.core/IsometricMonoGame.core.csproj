@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="GameCore.cs" />
+    <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />
     <Compile Include="Player.cs" />

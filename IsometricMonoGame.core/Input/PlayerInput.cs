@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace IsometricMonoGame.core
+namespace IsometricMonoGame.core.Input
 {
     internal interface IPlayerInput
     {
@@ -15,8 +15,10 @@ namespace IsometricMonoGame.core
         public Vector2 GetMoveDirection()
         {
             Vector2 direction = GetAxisVectorFromDevice();
-            if (direction.Length() > 0)
+
+            if (direction.Length() > 1)
                 direction.Normalize();
+
             return direction;
         }
     }
@@ -50,6 +52,7 @@ namespace IsometricMonoGame.core
         {
             Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
             direction.Y *= -1f;
+            
             return direction;
         }
     }

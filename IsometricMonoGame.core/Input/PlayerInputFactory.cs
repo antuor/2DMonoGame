@@ -1,13 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using IsometricMonoGame.Core;
 
-namespace IsometricMonoGame.core
+namespace IsometricMonoGame.core.Input
 {
     internal static class PlayerInputFactory
     {
         internal static IPlayerInput Create()
         {
-            return new GamePadPlayerInput();
+            Configuration config = GameCore.Configuration;
+            switch (config.ControlDevice)
+            {
+                case ControlDevice.GamePad: return new GamePadPlayerInput();
+                case ControlDevice.Keyboard: return new KeyboardPlayerInput();
+                default: throw new System.Exception("Bad device input");
+            }
         }
     }
 }

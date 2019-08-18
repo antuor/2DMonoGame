@@ -1,5 +1,5 @@
 ﻿using System;
-using IsometricMonoGame.core;
+using IsometricMonoGame.core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
