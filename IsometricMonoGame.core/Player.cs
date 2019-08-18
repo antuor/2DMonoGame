@@ -2,7 +2,6 @@
 using IsometricMonoGame.core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace IsometricMonoGame.Core
 {
@@ -19,7 +18,9 @@ namespace IsometricMonoGame.Core
 
         internal void Move(GameTime gameTime)
         {
-            Vector2 positionChanged = Input.GetMoveDirection() * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            IPlayerInput playerInput = PlayerInputFactory.Create();
+            Vector2 direction = playerInput.GetMoveDirection();
+            Vector2 positionChanged = direction * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
             position += positionChanged;
         }
 
