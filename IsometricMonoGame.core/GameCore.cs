@@ -1,25 +1,16 @@
 ﻿using IsometricMonoGame.core;
-using IsometricMonoGame.core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace IsometricMonoGame.Core
 {
     public class GameCore : Game
     {
-        private static Configuration configuration = null;
-
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Texture2D sprite;
         private Player player = null;
-        
-        internal static Configuration Configuration
-        {
-            get { return configuration; }
-        }
 
         public GameCore()
         {
@@ -35,7 +26,8 @@ namespace IsometricMonoGame.Core
         /// </summary>
         protected override void Initialize()
         {
-            configuration = InitializateConfig();
+            string fileName = "config.dat";
+            ConfigurationAccess.InitializeConfig(fileName);
             base.Initialize();
         }
 
@@ -84,16 +76,6 @@ namespace IsometricMonoGame.Core
             GraphicsDevice.Clear(Color.CornflowerBlue);
             player.Draw(spriteBatch);
             base.Draw(gameTime);
-        }
-
-        private Configuration InitializateConfig()
-        {
-            string fileName = "config.dat";
-            string[] lines = System.IO.File.ReadAllLines(fileName);
-
-            Configuration config = new Configuration();
-            config.ControlDevice = (ControlDevice)Enum.Parse(typeof(ControlDevice), lines[0]);
-            return config;
         }
     }
 }

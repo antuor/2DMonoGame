@@ -1,12 +1,10 @@
-﻿using IsometricMonoGame.Core;
-
-namespace IsometricMonoGame.core.Input
+﻿namespace IsometricMonoGame.core.Input
 {
     internal static class PlayerInputFactory
     {
         internal static IPlayerInput Create()
         {
-            Configuration config = GameCore.Configuration;
+            Configuration config = ConfigurationAccess.GetCurrentConfig();
             switch (config.ControlDevice)
             {
                 case ControlDevice.GamePad: return new GamePadPlayerInput();
