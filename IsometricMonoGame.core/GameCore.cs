@@ -10,6 +10,7 @@ namespace IsometricMonoGame.Core
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Texture2D sprite;
+        private Texture2D minesprite;
         private Player player = null;
 
         public GameCore()
