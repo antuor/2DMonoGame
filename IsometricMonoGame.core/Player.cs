@@ -6,12 +6,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace IsometricMonoGame.Core
 {
-    internal class Player : GameObject
+    internal sealed class Player : GameObject
     {
-        
+        private const string spriteName = "player";
         private Int32 speed = 100;
 
-        internal Player(Texture2D sprite) : base(sprite) { }
+        internal Player(GameCore game) : base(game, spriteName, new Vector2(0, 0)) { }
 
         internal void Move(GameTime gameTime)
         {

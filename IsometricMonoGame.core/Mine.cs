@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using IsometricMonoGame.core;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IsometricMonoGame.Core
 {
-    class Mine
+    internal class Mine : GameObject
     {
-
+        private const string spriteName = "mines";
+        internal Mine(GameCore game, Vector2 position) : base(game, spriteName, position) { }
     }
 }

@@ -1,30 +1,28 @@
-﻿using Microsoft.Xna.Framework;
+﻿using IsometricMonoGame.Core;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace IsometricMonoGame.core
 {
-    class GameObject
+    internal abstract class GameObject
     {
-        private Texture2D sprite;
-        private Vector2 position;
+        private string spriteName;
+        private GameCore game;
 
-        protected Vector2 Position
-        {
-            get => position;
-            set => position = value;
-        }
+        protected Vector2 Position { get; set; }
 
-        internal GameObject(Texture2D sprite)
+        internal GameObject(GameCore game, string spriteName, Vector2 position)
         {
-            this.sprite = sprite;
+            this.game = game;
+            this.spriteName = spriteName;
+            this.Position = position;
         }
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-            Vector2 drawPosition = new Vector2() { X = position.X - sprite.Width / 2, Y = position.Y - sprite.Height / 2 };
+            Texture2D sprite = game.SpritesStorage[spriteName];
+            Vector2 drawPosition = new Vector2() { X = Position.X - sprite.Width / 2, Y = Position.Y - sprite.Height / 2 };
             spriteBatch.Draw(sprite, drawPosition, Color.White);
-            spriteBatch.End();
         }
     }
 }

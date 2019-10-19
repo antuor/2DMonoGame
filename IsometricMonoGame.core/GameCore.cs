@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IsometricMonoGame.Core
 {
@@ -9,9 +11,14 @@ namespace IsometricMonoGame.Core
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Texture2D sprite;
-        private Texture2D minesprite;
-        private Player player = null;
+        private Player player;
+
+        private List<GameObject> gameObjects = null;
+        private Dictionary<string, Texture2D> spritesStorage = new Dictionary<string, Texture2D>();
+
+        private IEnumerable<GameObject> GameObjects { get => gameObjects; }
+
+        internal Dictionary<string, Texture2D> SpritesStorage { get => spritesStorage; }
 
         public GameCore()
         {
@@ -19,64 +26,55 @@ namespace IsometricMonoGame.Core
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
             string fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
+            InitializeGameObjects();
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            sprite = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Sprite-Temp");
+            spritesStorage["mines"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            if (player == null)
-                player = new Player(sprite);
+            
             player.Move(gameTime);
 
             base.Update(gameTime);
         }
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            player.Draw(spriteBatch);
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(2.0f));
+            foreach (GameObject go in GameObjects)
+                go.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        private void InitializeGameObjects()
+        {
+            player = new Player(this);
+            gameObjects = new List<GameObject>()
+                {
+                    player,
+                    new Mine(this, new Vector2(100, 100)),
+                    new Mine(this, new Vector2(200, 200))
+                };
         }
     }
 }
