@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace IsometricMonoGame.Core
 {
@@ -12,14 +11,13 @@ namespace IsometricMonoGame.Core
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
+        private Camera camera;
 
         private List<GameObject> gameObjects = null;
-        private Dictionary<string, Texture2D> spritesStorage = new Dictionary<string, Texture2D>();
+        private readonly Dictionary<string, Texture2D> spritesStorage = new Dictionary<string, Texture2D>();
 
         private IEnumerable<GameObject> GameObjects { get => gameObjects; }
-
-        internal Dictionary<string, Texture2D> SpritesStorage { get => spritesStorage; }
-
+        
         public GameCore()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -31,14 +29,17 @@ namespace IsometricMonoGame.Core
             string fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
             InitializeGameObjects();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Sprite-Temp");
-            spritesStorage["mines"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            camera = new Camera(player, GraphicsDevice, spritesStorage);
+            spritesStorage[Player.CommonSpriteNameRight] = Content.Load<Texture2D>(@"Sprites/Sprite-Temp");
+            spritesStorage[Player.CommonSpriteNameLeft] = Content.Load<Texture2D>(@"Sprites/Sprite-TempLeft");
+            spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
         }
 
         protected override void UnloadContent()
@@ -52,28 +53,27 @@ namespace IsometricMonoGame.Core
                 Exit();
             
             player.Move(gameTime);
-
             base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale(2.0f));
+            camera.Begin();
             foreach (GameObject go in GameObjects)
-                go.Draw(spriteBatch);
-            spriteBatch.End();
+                camera.Draw(go);
+            camera.End();
             base.Draw(gameTime);
         }
 
         private void InitializeGameObjects()
         {
-            player = new Player(this);
+            player = new Player();
             gameObjects = new List<GameObject>()
                 {
                     player,
-                    new Mine(this, new Vector2(100, 100)),
-                    new Mine(this, new Vector2(200, 200))
+                    new Mine(new Vector2(100, 100)),
+                    new Mine(new Vector2(200, 200))
                 };
         }
     }
