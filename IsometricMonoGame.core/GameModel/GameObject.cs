@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace IsometricMonoGame.core
+namespace MonoGame.Core.GameModel
 {
     internal abstract class GameObject
     {

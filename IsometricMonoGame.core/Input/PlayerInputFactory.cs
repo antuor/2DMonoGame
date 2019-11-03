@@ -1,4 +1,4 @@
-﻿namespace IsometricMonoGame.core.Input
+﻿namespace MonoGame.Core.Input
 {
     internal static class PlayerInputFactory
     {

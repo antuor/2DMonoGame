@@ -1,9 +1,9 @@
-﻿using IsometricMonoGame.Core;
+﻿using MonoGame.Core.GameModel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace IsometricMonoGame.core
+namespace MonoGame.Core
 {
     internal class Camera
     {
@@ -36,8 +36,8 @@ namespace IsometricMonoGame.core
 
             Vector2 position = gameObject.Position;
             Vector2 worldPosition = new Vector2() { X = position.X - sprite.Width / 2, Y = position.Y - sprite.Height / 2 };
-            Vector2 playerCameraOffset = CameraCenter - quarterScreenOffset;
-            Vector2 drawPosition = worldPosition - playerCameraOffset;
+            Vector2 CameraOffset = CameraCenter - quarterScreenOffset;
+            Vector2 drawPosition = worldPosition - CameraOffset;
 
             spriteBatch.Draw(sprite, drawPosition, Color.White);
         }

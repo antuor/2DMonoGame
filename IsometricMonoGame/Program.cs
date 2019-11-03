@@ -1,7 +1,7 @@
 ﻿using System;
-using IsometricMonoGame.Core;
+using MonoGame.Core;
 
-namespace IsometricMonoGame
+namespace MonoGame
 {
     /// <summary>
     /// The main class.

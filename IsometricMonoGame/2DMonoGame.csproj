@@ -110,9 +110,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IsometricMonoGame.core\IsometricMonoGame.core.csproj">
+    <ProjectReference Include="..\IsometricMonoGame.core\2DMonoGame.core.csproj">
       <Project>{0323e3ff-258b-4f52-ac09-e10d027c37b5}</Project>
-      <Name>IsometricMonoGame.core</Name>
+      <Name>2DMonoGame.core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

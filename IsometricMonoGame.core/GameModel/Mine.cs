@@ -1,7 +1,6 @@
-﻿using IsometricMonoGame.core;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace IsometricMonoGame.Core
+namespace MonoGame.Core.GameModel
 {
     internal class Mine : GameObject
     {

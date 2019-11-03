@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsometricMonoGame", "IsometricMonoGame\IsometricMonoGame.csproj", "{08DC8BF5-5D6C-4AAF-87ED-BA68FEE9D524}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DMonoGame", "IsometricMonoGame\2DMonoGame.csproj", "{08DC8BF5-5D6C-4AAF-87ED-BA68FEE9D524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsometricMonoGame.core", "IsometricMonoGame.core\IsometricMonoGame.core.csproj", "{0323E3FF-258B-4F52-AC09-E10D027C37B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DMonoGame.core", "IsometricMonoGame.core\2DMonoGame.core.csproj", "{0323E3FF-258B-4F52-AC09-E10D027C37B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

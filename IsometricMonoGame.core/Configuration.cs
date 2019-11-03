@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using IsometricMonoGame.core.Input;
+using MonoGame.Core.Input;
 
-namespace IsometricMonoGame.core
+namespace MonoGame.Core
 {
     internal class Configuration
     {

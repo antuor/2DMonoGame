@@ -1,9 +1,8 @@
 ﻿using System;
-using IsometricMonoGame.core;
-using IsometricMonoGame.core.Input;
+using MonoGame.Core.Input;
 using Microsoft.Xna.Framework;
 
-namespace IsometricMonoGame.Core
+namespace MonoGame.Core.GameModel
 {
     internal sealed class Player : GameObject
     {

@@ -1,10 +1,10 @@
-﻿using IsometricMonoGame.core;
+﻿using MonoGame.Core.GameModel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace IsometricMonoGame.Core
+namespace MonoGame.Core
 {
     public class GameCore : Game
     {

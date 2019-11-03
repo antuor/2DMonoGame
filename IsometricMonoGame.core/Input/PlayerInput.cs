@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace IsometricMonoGame.core.Input
+namespace MonoGame.Core.Input
 {
     internal interface IPlayerInput
     {
