@@ -9,7 +9,6 @@ namespace MonoGame.Core
     public class GameCore : Game
     {
         private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
         private Player player;
         private Camera camera;
 
@@ -35,11 +34,13 @@ namespace MonoGame.Core
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            camera = new Camera(player, GraphicsDevice, spritesStorage);
+            Configuration config = ConfigurationAccess.GetCurrentConfig();
+            camera = new Camera(player, GraphicsDevice, spritesStorage, 
+                config.playerFramePercentWidth, config.playerFramePercentHeight);
+
             spritesStorage[Player.CommonSpriteNameRight] = Content.Load<Texture2D>(@"Sprites/Sprite-Temp");
             spritesStorage[Player.CommonSpriteNameLeft] = Content.Load<Texture2D>(@"Sprites/Sprite-TempLeft");
-            spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Sprite-Mine");
         }
 
         protected override void UnloadContent()

@@ -18,7 +18,7 @@ namespace MonoGame.Core.GameModel
             Vector2 direction = playerInput.GetMoveDirection();
             Vector2 positionChanged = direction * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
             Position += positionChanged;
-            ChooseSpriteFromDirection(direction);
+            //ChooseSpriteFromDirection(direction);
         }
 
         internal void ChooseSpriteFromDirection(Vector2 direction)
