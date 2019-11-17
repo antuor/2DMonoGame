@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MonoGame.core.GameModel;
+using Microsoft.Xna.Framework;
 
 namespace MonoGame.Core.GameModel
 {

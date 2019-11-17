@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="CollisionChecker.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="GameCore.cs" />
     <Compile Include="GameModel\GameObject.cs" />
+    <Compile Include="GameModel\HitBox.cs" />
     <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />

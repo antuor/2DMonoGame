@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DMonoGame", "IsometricMono
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DMonoGame.core", "IsometricMonoGame.core\2DMonoGame.core.csproj", "{0323E3FF-258B-4F52-AC09-E10D027C37B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DMonoGame.Core.Tests", "2DMonoGame.Core.Tests\2DMonoGame.Core.Tests.csproj", "{29D445C5-0A2D-4E73-98F7-BA3E9B9E2701}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0323E3FF-258B-4F52-AC09-E10D027C37B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0323E3FF-258B-4F52-AC09-E10D027C37B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0323E3FF-258B-4F52-AC09-E10D027C37B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D445C5-0A2D-4E73-98F7-BA3E9B9E2701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D445C5-0A2D-4E73-98F7-BA3E9B9E2701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D445C5-0A2D-4E73-98F7-BA3E9B9E2701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D445C5-0A2D-4E73-98F7-BA3E9B9E2701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
